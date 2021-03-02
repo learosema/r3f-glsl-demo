@@ -1,6 +1,6 @@
-# New Project
+# React GLSL Playground
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+This is a playground running a shader animation, using react-three-fiber.
 
 ## Available Scripts
 

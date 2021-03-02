@@ -1,12 +1,12 @@
+// mport glslify from 'snowpack-plugin-glslify'
+
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    src: "/",
-    public: "/",
+    src: '/',
+    public: '/',
   },
-  plugins: [
-    /* ... */
-  ],
+  plugins: ['snowpack-plugin-glslify'],
   routes: [
     /* Enable an SPA Fallback in development: */
     // {"match": "routes", "src": ".*", "dest": "/index.html"},

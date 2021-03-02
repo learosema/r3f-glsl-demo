@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
-import { MeshProps, useFrame } from "react-three-fiber";
-import type { Mesh } from "three";
+import React, { useRef, useState } from 'react';
+import { MeshProps, useFrame } from 'react-three-fiber';
+import type { Mesh } from 'three';
+
+// This the Hello World example from the react-three-fiber site.
 
 export const Box: React.FC<MeshProps> = (props) => {
   // This reference will give us direct access to the mesh
@@ -25,7 +27,7 @@ export const Box: React.FC<MeshProps> = (props) => {
       onPointerOut={(event) => setHover(false)}
     >
       <boxBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
     </mesh>
   );
 };
