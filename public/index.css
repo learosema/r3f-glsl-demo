@@ -1,0 +1,13 @@
+body {
+  background: #639;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
