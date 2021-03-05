@@ -3,7 +3,14 @@
 uniform float time;
 uniform vec2 resolution;
 varying vec2 vUv;
+uniform vec3 top;
+uniform vec3 middle;
+uniform vec3 bottom;
 
 void main() {
-  gl_FragColor = vec4(vec3(sin(time), 0, 1.) * noise(vUv.xy + vec2(time * .1, 0)), 1.);
+  vec2 p = vec2(vUv.x, 1. - vUv.y);
+  vec3 bg1 = mix(top, middle, p.y * 2.);
+  vec3 bg2 = mix(middle, bottom, p.y * 2. - 1.);
+  vec3 bg = mix(bg1, bg2, step(vUv.y, .5)); 
+  gl_FragColor = vec4(bg, 1.);
 }
