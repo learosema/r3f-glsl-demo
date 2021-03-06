@@ -69,11 +69,11 @@ vec3 scene(vec2 p) {
   vec2 pP = vec2(p.x + 1., p.y);
   float a = atan(pP.y, pP.x);
   float palmDF = sdCircle(pP, .1) + sin(a * 6.) * .1 + sin(pP.x * 50.) * .01;
-  float stumpDF = sdTriangle();
+  float stumpDF = sdTriangle(pP, vec2(0), vec2(-.02,-.7), vec2(.01,-.7));
   palmDF = min(palmDF, stumpDF);
   float palm = smoothstep(0., 0.01, palmDF);
   vec3 palmColor = vec3(0);
-  // color = mix(palmColor, color, palm);
+  color = mix(palmColor, color, palm);
 
   return color;
 }
