@@ -39,6 +39,7 @@ vec3 gradient(vec2 p, vec3 c1, vec3 c2, vec3 c3) {
   return mix(bg1, bg2, step(0., p.y));
 }
 
+
 vec3 scene(vec2 p) {
   // Background
   vec3 color = gradient(p, bottomBG, middleBG, topBG);
@@ -66,7 +67,8 @@ vec3 scene(vec2 p) {
   color = mix(color, beachColor, beach);
 
   // Palm
-  vec2 pP = vec2(p.x + 1., p.y);
+
+  vec2 pP = vec2(-.25 + mod(p.x + 1., .5), p.y + (p.x + 1.) * .1);
   float a = atan(pP.y, pP.x);
   float palmDF = sdCircle(pP, .1) + sin(a * 6.) * .1 + sin(pP.x * 50.) * .01;
   float stumpDF = sdTriangle(pP, vec2(0), vec2(-.02,-.7), vec2(.01,-.7));
