@@ -45,16 +45,17 @@ vec3 scene(vec2 p) {
   vec3 color = gradient(p, bottomBG, middleBG, topBG);
   
   // Sun
-  float sunIntensity = 1. - smoothstep(0., .2, sdCircle(p, .2));
+  float sunRadius = .3;
+  float sunIntensity = 1. - smoothstep(0., .2, sdCircle(p, sunRadius));
   color = mix(color, sunFG, sunIntensity);
   
   // Water
   vec2 pW = vec2(clamp(p.x, -.8, .8), p.y);
   float water = step(p.y, -.3);
-  float n = noise(pW);
+  float n = noise(p * 2.);
   vec3 waterColor = mix(
-    mix(bottomBG, vec3(.0,.2,.4), .5 + n * .01), 
-    mix(middleBG, bottomBG, .5 + .5 * sin(time * .1 + pW.y * pW.y * 17.)), (.9 + .1 * sin(-time * .1 + length(pW) + n * .2 + pW.y * 30.)) * 
+    mix(bottomBG, vec3(.0,.2,.4), noise(vec2(p.x, time * .1 - 10. / p.y)) * .1 + .4), 
+    mix(middleBG, bottomBG, n * .5 + .5 * sin(time * .1 + 10. / pW.y * 4.)), (.9 + .1 * sin(-time * .1 + length(pW) + n * .2 + pW.y * 30.)) * 
     max(0., cos(2. * abs(pW.x) * max(0., .2 * PI - pW.y * 2. + sin(pW.y * 100.) * .2)))
   ); 
   color = mix(color, waterColor, water);
