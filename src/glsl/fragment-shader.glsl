@@ -50,13 +50,13 @@ vec3 scene(vec2 p) {
   color = mix(color, sunFG, sunIntensity);
   
   // Water
-  vec2 pW = vec2(clamp(p.x, -.8, .8), p.y);
+  vec2 pW = vec2(clamp(p.x, -.6, .6), p.y);
   float water = step(p.y, -.3);
   float n = noise(p * 2.);
   vec3 waterColor = mix(
     mix(bottomBG, vec3(.0,.2,.4), noise(vec2(p.x, time * .1 - 10. / p.y)) * .1 + .4), 
     mix(middleBG, bottomBG, n * .5 + .5 * sin(time * .1 + 10. / pW.y * 4.)), (.9 + .1 * sin(-time * .1 + length(pW) + n * .2 + pW.y * 30.)) * 
-    max(0., cos(2. * abs(pW.x) * max(0., .2 * PI - pW.y * 2. + sin(pW.y * 100.) * .2)))
+    max(0., cos(3. * abs(pW.x) * max(0., .2 * PI - pW.y * 2. + sin(pW.y * 100.) * .2)))
   ); 
   color = mix(color, waterColor, water);
   
