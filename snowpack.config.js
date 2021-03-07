@@ -6,14 +6,14 @@ module.exports = {
     src: '/',
     public: '/',
   },
-  plugins: ['snowpack-plugin-glslify'],
+  plugins: ['snowpack-plugin-glslify', ['@snowpack/plugin-webpack', {}]],
   routes: [
     /* Enable an SPA Fallback in development: */
     // {"match": "routes", "src": ".*", "dest": "/index.html"},
   ],
   optimize: {
     /* Example: Bundle your final build: */
-    // "bundle": true,
+    bundle: false,
   },
   packageOptions: {
     /* ... */
